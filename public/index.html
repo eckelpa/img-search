@@ -1,25 +1,37 @@
+
 <!DOCTYPE html>
 
-<html>
-
+<html lang="en">
 	<head>
-		<title>Timestamp microservice</title>
+		<meta charset="UTF-8"/>
+		<title>Image Search Abstraction Layer</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<meta name="description" content="Image Search Abstraction Layer"/>
+		<meta name="author" content="eckelpa"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		
-		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+		<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
 	</head>
-	
-	<header>
-		<div class="container">
-			<p>This is a simple timestamp microservice</p>
-		</div>
-	</header>
-	
 	<body>
-		<div class="container">
-			<p>Usage:</p>
-			<p>Pass a date string or a unix timestamp as parameter.</p>
+		<div class="container-fluid">
+			<h1 class="header">FreeCodeCamp API Basejump: Image Search Abstraction Layer</h1>
+			<blockquote>
+				<p>User stories:</p>
+				<ul>
+					<li>I can get the image URLs, alt text and page urls for a set of images relating to a given search string.</li>
+					<li>I can paginate through the responses by adding a ?offset=2 parameter to the URL.</li>
+					<li>I can get a list of the most recently submitted search strings.</li>
+				</ul>
+			</blockquote>
+			<h3>Image Search:</h3>
+			<code>https://little-url.herokuapp.com/?q=lolcats</code><br/>
+			<code>https://little-url.herokuapp.com/?q=airplanes&offset=2</code>
+			<h3>View latest queries:</h3>
+			<code>https://little-url.herokuapp.com/latest</code>
+			<h4>Sample response:</h4>
+		    <code>[{"query":"horses","time":"2016-04-24T22:19:02.522Z"},{"query":"lolcats","time":"2016-04-25T12:23:40.369Z"}]</code>
 		</div>
-	
 	</body>
 
 </html>

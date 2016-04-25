@@ -1,20 +1,33 @@
 'use strict';
 
-//var path = process.cwd();
-
-var dateFormat = require(process.cwd() + '/app/controllers/dateFormater.js');
+var mongoose = require('mongoose');
+var QueryHandler = require('../controllers/queryHandler.js');
+var db = mongoose.connection;
 
 module.exports = function (app) {
     
-    app.route('/')
-        .get(function(req, res) {
-           res.sendFile(process.cwd() + '/public/index.html'); 
+    var queryHandler = new QueryHandler();
+    
+        app.route('/latest/')
+        .get(function(req,res) {
+        
+            queryHandler.getRecent(db, res);
+            
         });
     
-
-    app.get('/*', function(req, res) {
-  	    var query = req.params[0];
-  		res.send(dateFormat(query));
-    });
-
+    app.route('/*')
+        .get(function(req, res) {
+            var query = req.query.q;
+        
+            if (query) {
+                
+                queryHandler.saveQuery(db, req, res);
+                
+            } else {
+                
+                res.sendFile(process.cwd() + '/public/index.html');
+            
+            }
+        });
+        
 };
